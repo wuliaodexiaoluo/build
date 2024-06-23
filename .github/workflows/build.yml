@@ -27,7 +27,7 @@ jobs:
           npm install
       - name: build-step-3
         run:
-          npm run tauri dev
+          npm run tauri build
       - name: build-step-4
         run:
           tar vcf debug.tar ./src-tauri/debug/webview.exe
