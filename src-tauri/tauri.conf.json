@@ -20,7 +20,7 @@
     "windows": [
       {
         "title": "webview",
-        "url":"https://localhost:8000",
+        "url":"http://localhost:8000",
         "width": 800,
         "height": 600
       }
