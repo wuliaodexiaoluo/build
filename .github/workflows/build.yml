@@ -28,11 +28,15 @@ jobs:
       - name: build-step-3
         run:
           npm run tauri build
-      - name: build-step-4
-        run:
-          tar vcf debug.tar ./src-tauri/debug/webview.exe
       - name: Upload
-        uses: actions/upload-artifact@v4
-        with:
-          name: Webview
-          path: ./debug.tar
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          copy .\src-tauri\target\release\webview.exe .\webview.exe
+          rd /s /q .\src-tauri\
+          rd /s /q .\node_modules\
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "1"
+          git push git@github.com:wuliaodexiaoluo/build.git
