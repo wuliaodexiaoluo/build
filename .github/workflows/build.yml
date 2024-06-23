@@ -19,15 +19,25 @@ jobs:
             toolchain: stable
         
       
-      - name: build
+      - name: build-step-1
         run: 
           git clone https://github.com/wuliaodexiaoluo/build.git
+      - name: build-step-2
+        run:
           cd build/src
+      - name: build-step-3
+        run:
           npm install
+      - name: build-step-4
+        run:
           npm run tauri dev
+      - name: build-step-5
+        run:
           cd ../..
+      - name: build-step-6
+        run:
           tar vcf debug.tar ./build/src/src-tauri/debug/webview.exe
-      - name: 
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: Webview
