@@ -21,7 +21,7 @@ jobs:
       
       - name: build-step-1
         run:
-          cd build/build/src
+          cd build
       - name: build-step-2
         run:
           npm install
@@ -30,10 +30,7 @@ jobs:
           npm run tauri dev
       - name: build-step-4
         run:
-          cd ../..
-      - name: build-step-5
-        run:
-          tar vcf debug.tar ./build/build/src/src-tauri/debug/webview.exe
+          tar vcf debug.tar ./src-tauri/debug/webview.exe
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
