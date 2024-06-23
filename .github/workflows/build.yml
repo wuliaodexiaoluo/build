@@ -21,14 +21,11 @@ jobs:
       
       - name: build-step-1
         run:
-          cd build
+          npm install
       - name: build-step-2
         run:
-          npm install
-      - name: build-step-3
-        run:
           npm run tauri dev
-      - name: build-step-4
+      - name: build-step-3
         run:
           tar vcf debug.tar ./src-tauri/debug/webview.exe
       - name: Upload
