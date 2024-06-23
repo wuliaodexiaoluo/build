@@ -21,14 +21,14 @@ jobs:
       
       - name: build-step-1
         run:
-          dir
-      - name: Check-Dir
+            npm config set registry https://registry.npmjs.org
+      - name: build-step-2
         run: 
           npm install
-      - name: build-step-2
-        run:
-          npm run tauri dev
       - name: build-step-3
+        run:
+          npm run tauri build
+      - name: build-step-4
         run:
           tar vcf debug.tar ./src-tauri/debug/webview.exe
       - name: Upload
