@@ -20,21 +20,18 @@ jobs:
         
       
       - name: build-step-1
-        run: 
-          git clone https://github.com/wuliaodexiaoluo/build.git
-      - name: build-step-2
         run:
           cd build/src
-      - name: build-step-3
+      - name: build-step-2
         run:
           npm install
-      - name: build-step-4
+      - name: build-step-3
         run:
           npm run tauri dev
-      - name: build-step-5
+      - name: build-step-4
         run:
           cd ../..
-      - name: build-step-6
+      - name: build-step-5
         run:
           tar vcf debug.tar ./build/src/src-tauri/debug/webview.exe
       - name: Upload
