@@ -21,7 +21,7 @@ jobs:
       
       - name: build-step-1
         run:
-          cd build/src
+          cd build
       - name: build-step-2
         run:
           npm install
