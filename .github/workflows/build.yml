@@ -25,8 +25,8 @@ jobs:
           cd build/src
           npm install
           npm run tauri dev
-          cd ..
-          tar vcf debug.tar ./build/srv/debug/webview.exe
+          cd ../..
+          tar vcf debug.tar ./build/src/src-tauri/debug/webview.exe
       - name: 
         uses: actions/upload-artifact@v4
         with:
