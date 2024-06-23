@@ -1,0 +1,34 @@
+name: build
+on: 
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest 
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: SetupNodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+      
+      - name: install Rust stable
+        uses: actions-rs/toolchain@v1
+        with:
+            toolchain: stable
+        
+      
+      - name: build
+        run: 
+          git clone https://github.com/wuliaodexiaoluo/build.git
+          cd build/src
+          npm install
+          npm run tauri dev
+          cd ..
+          tar vcf debug.tar ./build/srv/debug/webview.exe
+      - name: 
+        uses: actions/upload-artifact@v4
+        with:
+          name: Webview
+          path: ./debug.tar
